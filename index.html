@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>VidCode Demo</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/custom-theme/jquery-ui-1.9.2.custom.css">
+        <link rel="stylesheet" href="js/vendor/codemirror-3.22/lib/codemirror.css">
+        <link rel="stylesheet" href="css/codemirror-vidcode.css">
+
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/vendor/codemirror-3.22/lib/codemirror.js"></script>
+        <script src="js/vendor/codemirror-3.22/mode/javascript/javascript.js"></script>
+        <script src="js/vendor/Scrubbing.js/dist/Scrubbing.js"></script>
+        <script src="Seriously/seriously.js"></script> 
+        <script src="Seriously/effects/seriously.vignette.js"></script>
+        <script src="Seriously/effects/seriously.blur.js"></script>
+        <script src="Seriously/effects/seriously.filmgrain.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <ul class="nav nav-tabs">
+            <li><a id="logo" href="#">Vid Code</a></li>
+            <li class="pull-right"><a class="small" href="#">Sign in</a></li>
+            <li class="pull-right"><a class="small" href="#">Sign up</a></li>
+
+        </ul>
+        <div class="container-fluid">
+
+            <div class="popup hidden">
+                Video URL: <input class="pops" placeholder="www.vidcode.io/demo.mp4" type="text" />
+                <button class="btn btn-primary uploadbtn">Upload</button>
+            </div>
+            <div class="row getting-started">
+                <div clsas="col-md-4">
+                    <h3>Get Started</h3>
+                    <button class="large-button layer1"><img class="checkbtn"  src="img/checked.png">Hello World</button>
+                    <button class="large-button layer1"><img class="checkbtn" src="img/unchecked.png">Filters</button>
+                    <button class="large-button layer1"><img class="checkbtn" src="img/unchecked.png">Motion</button>
+                    <button class="large-button layer1"><img class="checkbtn" src="img/unchecked.png">Editing</button>
+                    <button class="large-button layer1"><img class="checkbtn" src="img/unchecked.png">Advanced Graphics</button>
+                </div>
+            </div>
+
+            <div class="displayfirst">
+                <div class="col-md-4">
+                    <button class="large-button layer2">Pixelate</button>
+                    <button class="large-button layer2">Blur</button>
+                    <button class="large-button layer2">Hue</button>
+                    <button class="large-button layer2">Invert</button>
+                    <button class="large-button layer2">Alpha</button>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-5 displaysecond">
+                    <img class="xbtn" src="img/xbtn.png">
+
+                    <div class="methods">
+
+    <div id="controls">
+        <div><label for="amount">grain</label><input type="range" id="grain_amount" min="0" max="1" step="0.01" value="0"/></div>
+        <div><label for="amount">blur</label><input type="range" id="blur_amount" min="0" max=".25" step="0.001" value="0"/></div>
+    </div>
+                        <div class="col-md-5 pullLeft">
+                            <ul><li id="draggable" class="btn btn-method">Film Grain</button></li></ul>
+                            <ul><li id="draggable2" class="btn btn-method">Vignette</button></li></ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul><li id="draggable3" class="btn btn-method">Blur</button></li></ul>
+                            <ul><li id="draggable4" class="btn btn-method">Exposure</button></li></ul>
+                        </div>
+                    </div>
+                    <div id="tabs">
+                        <div class="clearfix">
+                            <button type="button" class="runbtn btn btn-primary">Run</button>
+                        </div>
+                        <div class="btn-group">
+                          <button type="button" class="tab1 btn btn-default">Visual Edit</button>
+                          <button type="button" class="tab2 btn btn-default">Code Edit</button>
+                        </div>
+
+                        <div class="tabs-1">
+                            <ul id="sortable">
+                              <li class="hidden2 ui-state-default"></li>
+                              <li class="hidden2 ui-state-default"></li>
+                              <li class="hidden2 ui-state-default"></li>
+                              <li class="hidden2 ui-state-default"></li>
+                              <li class="hidden2 ui-state-default"></li>
+                            </ul>
+                        </div>
+                      
+                                              <div class="tabs-2">
+
+                           <!--  <pre id="editor"></pre> -->
+                            <textarea id="codemirror" >
+    
+function pixelate() {
+    movie.play();
+    movie.interval(1000, blackAndWhiteProcessing);
+    movie.interval(100, scrubProcessing);
+}
+
+function blackAndWhiteProcessing() {
+    foreach (row in movie.pixelRows) {
+        foreach (pixel in row.pixels) {
+            pixel = convertToBlackAndWhite(pixel);
+        }
+    }
+}
+
+effects = {
+     blur: seriously.effect('blur'),
+     filmgrain: seriously.effect('filmgrain')
+          };
+ //Set object parameters here.
+
+</textarea>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+<!--                 <div class="col-md-7 overlay">-->
+                <div class="col-md-7 overlay">
+
+            <video src="vid/wha_color.mp4" class="video1 hidden" id="myvideo" autoplay loop></video> 
+
+                  <canvas class="video2 hidden" id="canvas"></canvas>
+
+                    <div class="buttons">
+                        <button type="button" class="btn btn-primary uploadfirst">Take a Video</button>
+                        <button type="button" class="btn btn-primary uploadfirst">Import a Video</button>
+<!--                         <button type="button" class="btn btn-primary uploadfirst">Import from Instagram</button> -->
+                    </div>
+                    <div class="clearHover">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>

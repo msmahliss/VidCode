@@ -1,0 +1,22 @@
+{
+  "name": "Scrubbing",
+  "version": "0.0.3",
+  "description": "Highly customizable mouse scrubbing implementation for numbers and custom data.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Scrubbing",
+    "Browser"
+  ],
+  "author": "Fabrice Weinberg",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.7",
+    "load-grunt-tasks": "~0.2.1",
+    "grunt-docco": "~0.3.0"
+  }
+}

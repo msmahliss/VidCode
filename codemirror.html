@@ -1,0 +1,109 @@
+<html>
+<head>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/vendor/codemirror-3.22/lib/codemirror.js"></script>
+	<script src="js/vendor/codemirror-3.22/mode/javascript/javascript.js"></script>
+	<script src="js/vendor/Scrubbing.js/dist/Scrubbing.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="js/vendor/codemirror-3.22/lib/codemirror.css">
+	<link rel="stylesheet" href="/css/codemirror-vidcode.css">
+</head>
+<body style="margin:10px;">
+	<textarea id="codemirror" >
+	
+
+
+function pixelate() {
+    movie.play();
+    movie.interval(1000, blackAndWhiteProcessing);
+    movie.interval(100, scrubProcessing);
+}
+
+
+function blackAndWhiteProcessing() {
+    foreach (row in movie.pixelRows) {
+        foreach (pixel in row.pixels) {
+            pixel = convertToBlackAndWhite(pixel);
+        }
+    }
+}
+
+pixelate();
+
+
+</textarea>
+
+	<script>
+		$(document).ready(function() {
+
+			var glossary = {
+				'function': 
+'In vidcode, a function is a block of code which executes a certain behavior.\
+ * You can \"call\" on a function to complete its behavior in other parts of your code (and as many times as you want).\
+ * Our vidcode has 3 functions: pixelate(), blackandWhiteProcessing(), and scrubProcessing().',
+ 				'play' :
+' * \"Play\" is a function which can be applied to an object.  In our code the object is \"movie\".\
+ * To apply a function to an object you place it directly after the object with a period in between.',
+ 				'foreach' :
+' * foreach allows you to cycle through all the pixels in your video.  The computer reads each of your pixels in list form (a really loooong list), then paints them on the screen.  This is the secret to video processing!'
+			};
+
+			var myCodeMirror = CodeMirror.fromTextArea(document.getElementById('codemirror'),  {
+				  value: "function myScript(){return 100;}\n",
+				  mode:  "javascript",
+				  lineWrapping: true,
+				  lineNumbers: true
+				});
+
+			$(".cm-keyword:contains('function')")
+				.addClass('vc-glossary')
+				.attr('title', glossary.function)
+				.data('toggle', 'tooltip')
+				.data('placement', 'bottom')
+				.tooltip();
+
+			$(".cm-variable:contains('foreach')")
+				.addClass('vc-glossary')
+				.attr('title', glossary.foreach)
+				.data('toggle', 'tooltip')
+				.data('placement', 'bottom')
+				.tooltip();
+
+			$(".cm-variable:contains('pixelate()')")
+				.addClass('vc-glossary')
+				.attr('title', 'This is a method or function, same thing.')
+				.data('toggle', 'tooltip')
+				.data('placement', 'right')
+				.tooltip();
+
+			
+		
+				var matches = document.querySelectorAll(".cm-number");
+
+				for (var i = 0; i < matches.length; i++)
+					{
+						var match = matches[i];
+
+new Scrubbing (
+match
+              , { driver : [ Scrubbing.driver.Mouse,
+                             Scrubbing.driver.MouseWheel,
+                             Scrubbing.driver.Touch
+                           ]});
+
+
+					}
+			
+
+				
+			
+		});
+
+
+
+		
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+.CodeMirror {
+	height:95%;
+}
+
+.vc-glossary {
+	text-decoration: underline;
+	cursor: help;
+}
+
+.tooltip {
+	z-index: 10000;
+	width:80%;
+}
+
+.tooltip .tooltip-inner {
+	max-width: 80%;
+	margin-left: 40px;
+}
