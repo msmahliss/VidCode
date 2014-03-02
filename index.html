@@ -18,18 +18,6 @@
         <link rel="stylesheet" href="css/custom-theme/jquery-ui-1.9.2.custom.css">
         <link rel="stylesheet" href="js/vendor/codemirror-3.22/lib/codemirror.css">
         <link rel="stylesheet" href="css/codemirror-vidcode.css">
-
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-        <script src="js/jquery.js"></script>
-        <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/vendor/codemirror-3.22/lib/codemirror.js"></script>
-        <script src="js/vendor/codemirror-3.22/mode/javascript/javascript.js"></script>
-        <script src="js/vendor/Scrubbing.js/dist/Scrubbing.js"></script>
-        <script src="Seriously/seriously.js"></script> 
-        <script src="Seriously/effects/seriously.vignette.js"></script>
-        <script src="Seriously/effects/seriously.blur.js"></script>
-        <script src="Seriously/effects/seriously.filmgrain.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 
     </head>
@@ -93,14 +81,14 @@
                     </div>
                     <div id="tabs">
                         <div class="clearfix">
-                            <button type="button" class="runbtn btn btn-primary">Run</button>
+                            <button type="button" class="runbtn btn btn-primary">Play/Pause</button>
                         </div>
                         <div class="btn-group">
                           <button type="button" class="tab1 btn btn-default">Visual Edit</button>
                           <button type="button" class="tab2 btn btn-default">Code Edit</button>
                         </div>
 
-                        <div class="tabs-1">
+                        <div class="tabs-1 hidden">
                             <ul id="sortable">
                               <li class="hidden2 ui-state-default"></li>
                               <li class="hidden2 ui-state-default"></li>
@@ -113,29 +101,7 @@
                                               <div class="tabs-2">
 
                            <!--  <pre id="editor"></pre> -->
-                            <textarea id="codemirror" >
-    
-function pixelate() {
-    movie.play();
-    movie.interval(1000, blackAndWhiteProcessing);
-    movie.interval(100, scrubProcessing);
-}
-
-function blackAndWhiteProcessing() {
-    foreach (row in movie.pixelRows) {
-        foreach (pixel in row.pixels) {
-            pixel = convertToBlackAndWhite(pixel);
-        }
-    }
-}
-
-effects = {
-     blur: seriously.effect('blur'),
-     filmgrain: seriously.effect('filmgrain')
-          };
- //Set object parameters here.
-
-</textarea>
+                            <textarea id="codemirror"></textarea>
 
                         </div>
 
@@ -147,7 +113,9 @@ effects = {
 <!--                 <div class="col-md-7 overlay">-->
                 <div class="col-md-7 overlay">
 
-            <video src="vid/wha_color.mp4" class="video1 hidden" id="myvideo" autoplay loop></video> 
+            <video class="video1 hidden" id="myvideo" autoplay loop>
+                <source src="vid/wha_color.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+            </video> 
 
                   <canvas class="video2 hidden" id="canvas"></canvas>
 
@@ -162,7 +130,17 @@ effects = {
             </div>
 
         </div>
-
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/vendor/codemirror-3.22/lib/codemirror.js"></script>
+        <script src="js/vendor/codemirror-3.22/mode/javascript/javascript.js"></script>
+        <script src="js/vendor/Scrubbing.js/dist/Scrubbing.js"></script>
+        <script src="Seriously/seriously.js"></script> 
+        <script src="Seriously/effects/seriously.vignette.js"></script>
+        <script src="Seriously/effects/seriously.blur.js"></script>
+        <script src="Seriously/effects/seriously.filmgrain.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 

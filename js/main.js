@@ -3,8 +3,8 @@ $( document ).ready(function() {
 
     var delay=1000//1 seconds
     setTimeout(function(){
-
-var seriously = new Seriously(),
+var media = document.getElementById('myvideo');
+    seriously = new Seriously(),
     video = seriously.source('#myvideo'), // get video element by CSS selector
     target = seriously.target('#canvas'), // output canvas
     effects = {
@@ -12,6 +12,7 @@ var seriously = new Seriously(),
     blur: seriously.effect('blur'),
     filmgrain: seriously.effect('filmgrain')
     };  
+    
 effects.vignette.source = video;
 effects.vignette.amount = 0;
 effects.blur.source = effects.vignette;
@@ -22,7 +23,31 @@ target.source = effects.filmgrain;
 
 seriously.go();
 
+  // var greeting = "Good" + ((now.getHours() > 17) ? " evening." : " day.");   
+  $(".runbtn").text(media.paused ? "Play" : "Pause");
     // Using CodeMirror
+        var editor_text = 
+"\
+  \n\
+  function filmGrain() {\n\
+    movie.play();\n\
+    movie.interval(1000, blackAndWhiteProcessing);\n\
+  }\n\
+  \n\
+  function blackAndWhiteProcessing() {\n\
+    foreach (row in movie.pixelRows) {\n\
+      foreach (pixel in row.pixels) {\n\
+        pixel = convertToBlackAndWhite(pixel);\n\
+          }\n\
+      }\n\
+  }\n\
+  \n\
+  effects = {\n\
+      blur: seriously.effect('blur'),\n\
+      filmgrain: seriously.effect('filmgrain')\n\
+      };\n\
+    ";
+
 
             var glossary = {
                 'function': 
@@ -33,7 +58,9 @@ seriously.go();
 ' * \"Play\" is a function which can be applied to an object.  In our code the object is \"movie\".\
  * To apply a function to an object you place it directly after the object with a period in between.',
                 'foreach' :
-' * foreach allows you to cycle through all the pixels in your video.  The computer reads each of your pixels in list form (a really loooong list), then paints them on the screen.  This is the secret to video processing!'
+' * foreach allows you to cycle through all the pixels in your video.  The computer reads each of your pixels in list form (a really loooong list), then paints them on the screen.  This is the secret to video processing!',
+                'effects' :
+' * effects is an object that contains information about each filter you had to your video.'
             };
 
             var myCodeMirror = CodeMirror.fromTextArea(document.getElementById('codemirror'),  {
@@ -64,6 +91,12 @@ seriously.go();
                 .data('placement', 'right')
                 .tooltip();
 
+            $(".cm-variable:contains('effects')")
+                .addClass('vc-glossary')
+                .attr('title', glossary.effects)
+                .data('toggle', 'tooltip')
+                .data('placement', 'right')
+                .tooltip();
             
         
                 var matches = document.querySelectorAll(".cm-number");
@@ -81,22 +114,18 @@ match
 
                     }
 
+  
+    $("#grain_amount").change(function(){
+        //editor.gotoLine(9);
+       myCodeMirror.setValue( editor_text + '\n\    effects.filmgrain.amount = ' + effects.filmgrain.amount + ';\n\    effects.blur.amount = ' + effects.blur.amount + ';');
+    });
 
-                    //Using ACE Editor
-
-//         editor.setValue(editor_text + '\n\    effects.filmgrain.amount = ' + effects.filmgrain.amount + ';\n\    effects.blur.amount = ' + effects.blur.amount + ';');
-    
-//     $("#grain_amount").change(function(){
-//         editor.gotoLine(9);
-//         editor.setValue(editor_text + '\n\    effects.filmgrain.amount = ' + effects.filmgrain.amount + ';\n\    effects.blur.amount = ' + effects.blur.amount + ';');
-//     });
-
-//     $("#blur_amount").change(function(){
-//         editor.gotoLine(10); 
-//         editor.setValue(editor_text + '\n\    effects.filmgrain.amount = ' + effects.filmgrain.amount + ';\n\    effects.blur.amount = ' + effects.blur.amount + ';');  
-//     });
+    $("#blur_amount").change(function(){
+       myCodeMirror.setValue( editor_text + '\n\    effects.filmgrain.amount = ' + effects.filmgrain.amount + ';\n\    effects.blur.amount = ' + effects.blur.amount + ';');
+    });
 
     $(".tab2").click(function(){
+       myCodeMirror.setValue(editor_text + '\n\    effects.filmgrain.amount = ' + effects.filmgrain.amount + ';\n\    effects.blur.amount = ' + effects.blur.amount + ';');
         $(".tabs-2").removeClass("hidden");
         $(".tabs-1").addClass("hidden");
     });
@@ -111,7 +140,7 @@ match
             "margin-left": 0}, "ease", function(){
                 $(".displayfirst").addClass("hidden2"); 
             });
-        $(".tabs-2").removeClass("hidden");
+        $(".tabs-1").removeClass("hidden");
     });
 
     $(".layer2").click(function(){
@@ -135,7 +164,14 @@ match
 
     $(".runbtn").click(function(){
         $(".video2").removeClass("hidden");
-        $('.buttons').hide();
+        $(".buttons").addClass("hidden");
+         if (media.paused) {
+          media.play();
+          $(this).text('Pause');                   
+        } else {
+          media.pause();
+          $(this).text('Play');                   
+      }
     });
 
     $( "#sortable" ).sortable({
@@ -152,7 +188,7 @@ match
       helper: "clone",
       revert: "invalid",
       stop: function( event, ui ) {               
-        editor.setValue(editor_text);  
+        // editor.setValue(editor_text);  
       }
 
     });
@@ -168,7 +204,7 @@ match
       helper: "clone",
       revert: "invalid",
       stop: function( event, ui ) {
-        editor.setValue(editor_text);
+        // editor.setValue(editor_text);
       }
     });
     $( "ul, li" ).disableSelection();
