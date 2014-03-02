@@ -18,6 +18,21 @@
         <link rel="stylesheet" href="css/custom-theme/jquery-ui-1.9.2.custom.css">
         <link rel="stylesheet" href="js/vendor/codemirror-3.22/lib/codemirror.css">
         <link rel="stylesheet" href="css/codemirror-vidcode.css">
+        <link rel="stylesheet" href="css/contentflow.css">
+
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/contentflow.js"></script>
+        <script src="js/vendor/codemirror-3.22/lib/codemirror.js"></script>
+        <script src="js/vendor/codemirror-3.22/mode/javascript/javascript.js"></script>
+        <script src="js/vendor/Scrubbing.js/dist/Scrubbing.js"></script>
+        <script src="Seriously/seriously.js"></script> 
+        <script src="Seriously/effects/seriously.vignette.js"></script>
+        <script src="Seriously/effects/seriously.blur.js"></script>
+        <script src="Seriously/effects/seriously.filmgrain.js"></script>
+
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 
     </head>
@@ -33,6 +48,18 @@
             <li class="pull-right"><a class="small" href="#">Sign up</a></li>
 
         </ul>
+
+
+          <div class="ContentFlow">
+                        <div class="loadIndicator"><div class="indicator"></div></div>
+                        <div class="flow">
+                         <img class="film" src="img/filmstrip.png" title="filmstrip"/>
+                                <!-- Add as many items as you like. -->
+                        </div>
+                        <div class="globalCaption"></div>
+                        <div class="scrollbar"><div class="slider"><div class="position"></div></div></div>
+                        </div>
+                        
         <div class="container-fluid">
 
             <div class="popup hidden">
@@ -114,7 +141,7 @@
                 <div class="col-md-7 overlay">
 
             <video class="video1 hidden" id="myvideo" autoplay loop>
-                <source src="vid/wha_color.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                <source src="vid/vine.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
             </video> 
 
                   <canvas class="video2 hidden" id="canvas"></canvas>
@@ -130,17 +157,7 @@
             </div>
 
         </div>
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-        <script src="js/jquery.js"></script>
-        <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/vendor/codemirror-3.22/lib/codemirror.js"></script>
-        <script src="js/vendor/codemirror-3.22/mode/javascript/javascript.js"></script>
-        <script src="js/vendor/Scrubbing.js/dist/Scrubbing.js"></script>
-        <script src="Seriously/seriously.js"></script> 
-        <script src="Seriously/effects/seriously.vignette.js"></script>
-        <script src="Seriously/effects/seriously.blur.js"></script>
-        <script src="Seriously/effects/seriously.filmgrain.js"></script>
+
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
