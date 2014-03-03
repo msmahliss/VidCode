@@ -237,7 +237,7 @@ textarea {
 }
 
 .btn-group{
-    margin-top: 62px;
+    margin-top: 20px;
 }
 
 .runbtn{
@@ -276,7 +276,6 @@ top: 235px;
     -moz-border-radius: 7px;
     border-radius: 7px;
 }
-
 
 .pullLeft{
     margin-left: -40px;
