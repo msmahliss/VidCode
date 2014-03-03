@@ -12,9 +12,9 @@ var media = document.getElementById('myvideo');
     blur: seriously.effect('blur'),
     filmgrain: seriously.effect('filmgrain')
     };  
-    
+
 effects.vignette.source = video;
-effects.vignette.amount = 0;
+effects.vignette.amount = '#vignette_amount';
 effects.blur.source = effects.vignette;
 effects.blur.amount = '#blur_amount';
 effects.filmgrain.source = effects.blur;
@@ -25,11 +25,12 @@ seriously.go();
 
   // var greeting = "Good" + ((now.getHours() > 17) ? " evening." : " day.");   
   $(".runbtn").text(media.paused ? "Play" : "Pause");
+
     // Using CodeMirror
         var editor_text = 
 "\
   \n\
-  function filmGrain() {\n\
+  function showEffect() {\n\
     movie.play();\n\
     movie.interval(1000, blackAndWhiteProcessing);\n\
   }\n\
@@ -44,6 +45,7 @@ seriously.go();
   \n\
   effects = {\n\
       blur: seriously.effect('blur'),\n\
+      vignette: seriously.effect('vignette'),\n\
       filmgrain: seriously.effect('filmgrain')\n\
       };\n\
     ";
@@ -114,20 +116,24 @@ match
 
                     }
 
+       myCodeMirror.setValue( editor_text + '\n\    effects.filmgrain.amount = ' + effects.filmgrain.amount + ';\n\    effects.blur.amount = ' + effects.blur.amount + ';\n\    effects.vignette.amount = ' + effects.vignette.amount + ';');
+
   
     $("#grain_amount").change(function(){
         //editor.gotoLine(9);
-       myCodeMirror.setValue( editor_text + '\n\    effects.filmgrain.amount = ' + effects.filmgrain.amount + ';\n\    effects.blur.amount = ' + effects.blur.amount + ';');
+       myCodeMirror.setValue( editor_text + '\n\    effects.filmgrain.amount = ' + effects.filmgrain.amount + ';\n\    effects.blur.amount = ' + effects.blur.amount + ';\n\    effects.vignette.amount = ' + effects.vignette.amount + ';');
     });
 
     $("#blur_amount").change(function(){
-       myCodeMirror.setValue( editor_text + '\n\    effects.filmgrain.amount = ' + effects.filmgrain.amount + ';\n\    effects.blur.amount = ' + effects.blur.amount + ';');
+       myCodeMirror.setValue( editor_text + '\n\    effects.filmgrain.amount = ' + effects.filmgrain.amount + ';\n\    effects.blur.amount = ' + effects.blur.amount + ';\n\    effects.vignette.amount = ' + effects.vignette.amount + ';');
+    });
+
+    $("#vignette_amount").change(function(){
+       myCodeMirror.setValue( editor_text + '\n\    effects.filmgrain.amount = ' + effects.filmgrain.amount + ';\n\    effects.blur.amount = ' + effects.blur.amount + ';\n\    effects.vignette.amount = ' + effects.vignette.amount + ';');
     });
 
     $(".tab2").click(function(){
-       myCodeMirror.setValue(editor_text + '\n\    effects.filmgrain.amount = ' + effects.filmgrain.amount + ';\n\    effects.blur.amount = ' + effects.blur.amount + ';');
         $(".tabs-2").removeClass("hidden");
-        $(".tabs-1").addClass("hidden");
     });
 
     $(".tab1").click(function(){
