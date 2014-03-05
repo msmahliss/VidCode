@@ -149,12 +149,12 @@ match
         $(".tabs-1").removeClass("hidden");
     });
 
-    $(".layer2").click(function(){
-        $(".displayfirst").animate({
-            "margin-left": -15}, "ease", function(){
-                $(".getting-started").addClass("hidden2");
-            });
-    });
+    // $(".layer1").click(function(){
+    //     $(".displayfirst").animate({
+    //         "margin-left": -15}, "ease", function(){
+    //             $(".getting-started").addClass("hidden2");
+    //         });
+    // });
 
     $(".uploadfirst").click(function(){
         $(".popup").removeClass("hidden");
@@ -165,7 +165,6 @@ match
         $(".video2").removeClass("hidden");
         $(".uploadfirst").addClass("hidden");
         $(".clearHover").addClass("hidden");
-        $(".overlay").addClass("blackbg");
     });
 
     $(".runbtn").click(function(){
