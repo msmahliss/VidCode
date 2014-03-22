@@ -189,6 +189,11 @@
                     <div class="buttons">
                         <!-- <button type="button" class="btn btn-primary uploadfirst">Take a Video</button> -->
                         <button type="button" class="btn btn-primary uploadfirst">Import a Video</button>
+                        <form method="POST" action="/upload" enctype="multipart/form-data">
+                            <input type="file" name="file" value="Choose a file" />
+                            <input type="submit" value="Upload" />
+
+                        </form>
 <!--                         <button type="button" class="btn btn-primary uploadfirst">Import from Instagram</button> -->
                     </div>
                     <div class="clearHover">
