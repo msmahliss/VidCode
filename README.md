@@ -26,6 +26,11 @@ example code snippet: stopmotion.interval = 500
 
 pixelate.x & pixelate.y → draws the pixel grid. The lower the number, the more pixels drawn and therefore, the smoother the video appears
 
+pixelate.size → size of each indiviual pixel instance. Defaults to 5.
+
+pixelate.motionDetection → boolean that controls whether motion detetion is ON or OFF. when set to TRUE, any change detected in the pixels from frame to frame will rotate those pixels for a cool animation effect.
+
+
 4. REPEAT
  // the repeat adds a looping effect to your video.
 repeat.start(functionName, interval)
