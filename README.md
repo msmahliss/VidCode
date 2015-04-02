@@ -1,3 +1,10 @@
+Vidcode is an online coding platform that teaches computer programming through video processing.
+The platform utilizes a live code editor, a webGL canvas, and a HTML5 video player, so users can write custom scripts that change their videos in realtime.
+
+Vidcode runs JavaScript in the editor and exposes a number of custom objects for the end user to play with. In addition to the the Vidcode objects listed here, any functional JavaScript can be run in the editor as well to create infinite combinations of scripts that produce video magic!
+
+Below are the custom objects that can be manipulated on the platform.
+
 FILTERS
 //The effects  object exposes the filters that can be applied to the videos. The filters include:
 vignette
@@ -32,11 +39,8 @@ pixelate.motionDetection → boolean that controls whether motion detetion is ON
 
 
 4. REPEAT
- // the repeat adds a looping effect to your video.
+ // the repeat object adds a looping effect to your video.
 repeat.start(functionName, interval)
-
- example code snippet: stopmotion.interval = 500
-
 
 repeat.stop() will end the looping
 
